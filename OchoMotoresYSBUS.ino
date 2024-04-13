@@ -8,22 +8,16 @@
 bfs::SbusRx sbus_rx(&Serial2, 2, 15, true, false);
 bfs::SbusData data;
 
-///************************CAMBIAR PINES************************
-///************************CAMBIAR PINES************************
-///************************CAMBIAR PINES************************
-////
-const uint8_t motor1_pins[3] = { 12, 18, 0 };  //Enable, Left_PWM, Right_PWM
-const uint8_t motor2_pins[3] = { 14, 19, 4 };  //Enable, Left_PWM, Right_PWM
-const uint8_t motor3_pins[3] = { 27, 21, 16 };  //Enable, Left_PWM, Right_PWM
-const uint8_t motor4_pins[3] = { 26, 22, 17 };  //Enable, Left_PWM, Right_PWM
 
-///************************CAMBIAR PINES************************
-///************************CAMBIAR PINES************************
-///************************CAMBIAR PINES************************
-const uint8_t motor5_pins[3] = { 12, 18, 0 };  //Enable, Left_PWM, Right_PWM
-const uint8_t motor6_pins[3] = { 14, 19, 4 };  //Enable, Left_PWM, Right_PWM
-const uint8_t motor7_pins[3] = { 27, 21, 16 };  //Enable, Left_PWM, Right_PWM
-const uint8_t motor8_pins[3] = { 26, 22, 17 };  //Enable, Left_PWM, Right_PWM
+const uint8_t motor1_pins[3] = { 2, 12, 13};  //Enable, Left_PWM, Right_PWM //RPWM3 EN PLACA
+const uint8_t motor2_pins[3] = { 2, 18, 5 };  //Enable, Left_PWM, Right_PWM //RPWM6 EN PLACA
+const uint8_t motor3_pins[3] = { 2, 17, 16 };  //Enable, Left_PWM, Right_PWM //RPWM7 EN PLACA
+const uint8_t motor4_pins[3] = { 2, 4, 0 };  //Enable, Left_PWM, Right_PWM //RPWM8 EN PLACA
+
+const uint8_t motor5_pins[3] = { 2, 32, 33};  //Enable, Left_PWM, Right_PWM //RPWM1 EN PLACA
+const uint8_t motor6_pins[3] = { 2, 26, 27 };  //Enable, Left_PWM, Right_PWM //RPWM2 EN PLACA
+const uint8_t motor7_pins[3] = { 2, 23, 22 };  //Enable, Left_PWM, Right_PWM //RPWM4 EN PLACA
+const uint8_t motor8_pins[3] = { 2, 21, 19 };  //Enable, Left_PWM, Right_PWM //RPWM5 EN PLACA
 
 BTS7960 motorController1(motor1_pins[0], motor1_pins[1], motor1_pins[2]);
 BTS7960 motorController2(motor2_pins[0], motor2_pins[1], motor2_pins[2]);
@@ -110,7 +104,7 @@ void loop() {
     } else{
       giroSentidoAntiHorario(motorControllerPatita4);
     }
-
+  }
 }
 
 void adelante() {
@@ -152,16 +146,16 @@ void alto() {
   motorController4.Stop();
 }
 
-void giroHorario(BTS7960 controller){
+void giroSentidoHorario(BTS7960 controller){
   controller.TurnLeft(velocidadPatita);
 }
 
-void giroAntiHorario(BTS7960 controller){
+void giroSentidoAntiHorario(BTS7960 controller){
   controller.TurnRight(velocidadPatita);
 }
 
 void detenerPatita(BTS7960 controller){
-  controller.Stop(velocidadPatita);
+  controller.Stop();
 }
 
 
