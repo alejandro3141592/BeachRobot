@@ -6,7 +6,7 @@
 
 #include "sbus.h"
 
-bfs::SbusRx sbus_rx(&Serial2, 2, 15, true, false);
+bfs::SbusRx sbus_rx(&Serial2, 15, 2, true, false);
 bfs::SbusData data;
 
 
