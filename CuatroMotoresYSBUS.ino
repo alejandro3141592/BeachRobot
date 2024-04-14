@@ -7,10 +7,11 @@ bfs::SbusRx sbus_rx(&Serial2, 15, 2, true, false);
 bfs::SbusData data;
 
  
-const uint8_t motor1_pins[3] = { 12, 18, 0 };  //Enable, Left_PWM, Right_PWM
-const uint8_t motor2_pins[3] = { 14, 19, 4 };  //Enable, Left_PWM, Right_PWM
-const uint8_t motor3_pins[3] = { 27, 21, 16 };  //Enable, Left_PWM, Right_PWM
-const uint8_t motor4_pins[3] = { 26, 22, 17 };  //Enable, Left_PWM, Right_PWM
+const uint8_t motor1_pins[3] = { 2, 12, 13};  //Enable, Left_PWM, Right_PWM //RPWM3 EN PLACA
+const uint8_t motor2_pins[3] = { 2, 18, 5 };  //Enable, Left_PWM, Right_PWM //RPWM6 EN PLACA
+const uint8_t motor3_pins[3] = { 2, 17, 16 };  //Enable, Left_PWM, Right_PWM //RPWM7 EN PLACA
+const uint8_t motor4_pins[3] = { 2, 4, 0 };  //Enable, Left_PWM, Right_PWM //RPWM8 EN PLACA
+
 
 BTS7960 motorController1(motor1_pins[0], motor1_pins[1], motor1_pins[2]);
 BTS7960 motorController2(motor2_pins[0], motor2_pins[1], motor2_pins[2]);
