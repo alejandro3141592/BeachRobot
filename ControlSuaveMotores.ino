@@ -3,6 +3,7 @@
 
 //Patas delanteras, canales 11 y 12. Patas traseras canales 6 y 7
 #include "BTS7960.h"
+#include "ESP32WatchdogTimer.h"
 #include "sbus.h"
 
 bfs::SbusRx sbus_rx(&Serial2, 2, 15, true, false);
@@ -72,12 +73,15 @@ void setup() {
   timerAttachInterrupt(timer, &onTimer, true);
   timerAlarmWrite(timer, 100000, true); // 0.1 seconds (100,000 microseconds)
   timerAlarmEnable(timer);
+
+   ESP32WatchdogTimer::begin(1000); // 1000 milisegundos = 1 segundos
 }
 
 ///************************CAMBIAR canales por variables************************
 
-void loop() {
+void loop() { 
 
+  ESP32WatchdogTimer::reset();
   if (sbus_rx.Read()) {
     /* Grab the received data */
     data = sbus_rx.data();
