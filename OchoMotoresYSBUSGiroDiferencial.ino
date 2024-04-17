@@ -3,7 +3,6 @@
 
 //Patas delanteras, canales 11 y 12. Patas traseras canales 6 y 7
 #include "BTS7960.h"
-#include "ESP32WatchdogTimer.h"
 
 #include "sbus.h"
 
@@ -43,13 +42,13 @@ void setup() {
   motorController4.Enable();
   sbus_rx.Begin();
 
-  ESP32WatchdogTimer::begin(1000); // 1000 milisegundos = 1 segundos
+  
 }
 
 ///************************CAMBIAR canales por variables************************
 
 void loop() {
-  ESP32WatchdogTimer::reset();
+ 
   if (sbus_rx.Read()) {
     /* Grab the received data */
     data = sbus_rx.data();
