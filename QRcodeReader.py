@@ -24,6 +24,9 @@ def read_qr_code():
         # Decode QR code
         detect = cv2.QRCodeDetector()
 
+        ## SI POR ALGUN MOTIVO NO FUNCIONA EL CODIGO, DESCOMENTAR LA LINEA DE ABAJO, Y EN LUGAR DE FRAME PASAR MIRRORED_FRAME A LA PROXIMA FUNCION
+        #mirrored_image = cv2.flip(frame, 1)
+
         # Draw rectangle and text around QR code
         retval, decoded_info, points, straight_qrcode = detect.detectAndDecodeMulti(frame)
 
